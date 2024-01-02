@@ -1,8 +1,14 @@
-# React + Vite
+## Consulta Climática
+Projeto web React.js para obter informações climáticas em tempo real. Insira o nome da cidade e visualize dados, incluindo umidade, velocidade do vento e descrição climática.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Recursos:
+- Interface amigável.
+- Integração com API de clima.
 
-Currently, two official plugins are available:
+### Tecnologias:
+- React.js
+- Tailwindcss
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### API
+- Open Weather
+- Referência: https://openweathermap.org/current
