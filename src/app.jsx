@@ -1,9 +1,23 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
+
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
 
 export const App = () => {
    return (
-      <div>
-         <h1>Hello World</h1>
-      </div>
+      <>
+         <Toaster
+            position="bottom-right"
+            reverseOrder={false}
+            toastOptions={{
+               style: {
+                  fontSize: '.875rem',
+               },
+               duration: 1500,
+            }}
+         />
+         <RouterProvider router={router} />
+      </>
    );
 };
