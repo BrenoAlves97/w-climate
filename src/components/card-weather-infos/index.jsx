@@ -3,9 +3,10 @@ import { Droplets, Wind } from 'lucide-react';
 
 export const CardWeather = ({ data }) => {
    console.log(data);
-
-   const days = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
    const date = new Date();
+
+   const optionsDate = { weekday: 'long', timeZone: 'UTC' };
+   const formatter = Intl.DateTimeFormat('pt-BR', optionsDate);
 
    return (
       <div className="flex sm:items-start items-center sm:flex-row flex-col gap-4 sm:gap-0">
@@ -59,7 +60,7 @@ export const CardWeather = ({ data }) => {
             </p>
 
             <p className="font-bold lowercase text-right">
-               {days[date.getDate()]},{' '}
+               {formatter.format(date)},{' '}
                <span>
                   {date.getHours()}:
                   {date.getMinutes() >= 0 && date.getMinutes() < 10
