@@ -8,66 +8,27 @@ export const CardWeather = ({ data }) => {
    const optionsDate = { weekday: 'long', timeZone: 'UTC' };
    const formatter = Intl.DateTimeFormat('pt-BR', optionsDate);
 
+   const optionsHour = { hour: 'numeric', minute: 'numeric', hour12: false };
+   const formatterHour = Intl.DateTimeFormat('pt-BR', optionsHour);
+
    return (
-      <div className="flex sm:items-start items-center sm:flex-row flex-col gap-4 sm:gap-0">
-         <div className="flex gap-2">
-            <div className="flex items-center gap-1 self-start">
-               <span>
-                  <img
-                     className="block rounded-lg w-8 h-8 min-h-8"
-                     src={`https://flagsapi.com/${data.sys.country}/flat/64.png`}
-                     alt={data.name}
-                  />
-               </span>
+      <div className="flex flex-col items-center p-2">
+         <p className="text-gray-800 text-center text-3xl sm:text-4xl mb-4">{data.name}</p>
 
-               <p className="font-medium pl-1 flex items-center text-indigo-600">
-                  <span className="text-2xl">{data.name} </span>
-               </p>
+         <div className="flex text-center gap-4 flex-col sm:flex-row items-center justify-center sm:justify-between w-full">
+            <div className="sm:text-left">
+               <p className="text-xl font-bold">{data.main.temp.toFixed(0)} °C</p>
+               <p>Umidade: {data.main.humidity}%</p>
+               <p>Vento: {data.wind.speed.toFixed(0)}km/h</p>
             </div>
 
-            <div className="flex flex-col gap-1 pl-1">
-               <p className="flex text-xl items-center gap-2 text-indigo-500">
-                  {data.main.temp.toFixed(0)} <span className="font-bold text-2xl text-indigo-600"> °C</span>
+            <div className="flex-1 sm:text-right sm:self-end">
+               <p className="text-xl font-bold">Clima</p>
+               <p className="text-base">{data.weather[0].description}</p>
+               <p className="lowercase text-gray-800 font-bold">
+                  {formatter.format(date)}, <span>{formatterHour.format(date)}</span>
                </p>
-
-               <div className="flex gap-2 flex-col text-xs text-indigo-500">
-                  <div className="flex items-center gap-1">
-                     <Droplets size={20} color="#4f46e5" />
-                     <span>
-                        Umidade: {data.main.humidity}
-                        <span className="font-bold">%</span>
-                     </span>
-                  </div>
-
-                  <div className="flex items-center gap-1">
-                     <Wind size={20} color="#4f46e5" />
-                     <span>
-                        {data.wind.speed.toFixed(0)} <span className="font-bold">km/h</span>
-                     </span>
-                  </div>
-               </div>
             </div>
-         </div>
-
-         <div className="p-2 pt-0 sm:ml-auto text-base bg-indigo-200 rounded-lg text-indigo-700">
-            <p className="flex items-center gap-1">
-               <img
-                  className="w-12"
-                  src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
-                  alt={data.weather[0].main}
-               />
-               <span className="text-base">{data.weather[0].description}</span>
-            </p>
-
-            <p className="font-bold lowercase text-right">
-               {formatter.format(date)},{' '}
-               <span>
-                  {date.getHours()}:
-                  {date.getMinutes() >= 0 && date.getMinutes() < 10
-                     ? `${0 + date.getMinutes()}`
-                     : `${date.getMinutes()}`}
-               </span>
-            </p>
          </div>
       </div>
    );

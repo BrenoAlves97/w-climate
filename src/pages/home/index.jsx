@@ -50,49 +50,49 @@ export const Home = () => {
 
    return (
       <>
-         <div className="w-full h-screen bg-indigo-100">
+         <div className="w-full h-screen bg-gray-100">
             <div className="w-full max-w-3xl mx-auto mt-16">
-               <div className="overflow-hidden flex flex-col items-center justify-center">
-                  <div className="w-40 h-40 rounded-full bg-indigo-50">
-                     <img className="w-40 h-40 rounded-full border-2 border-indigo-300" src={img01} alt="Imagem" />
+               <div className="overflow-hidden flex flex-col items-center justify-center select-none">
+                  <div className="w-44 h-44 rounded-full">
+                     <img className="w-44 h-44 rounded-full border-2 border-gray-200" src={img01} alt="Imagem" />
                   </div>
-                  <p className="font-medium text-indigo-500 text-center mt-6">Saiba como está o clima em sua cidade</p>
+                  <p className="font-bold text-gray-800  text-center mt-6">Saiba como está o clima em sua cidade</p>
                </div>
             </div>
 
             <div className="w-full max-w-xl mx-auto p-6">
                {loading && !data && (
-                  <div className="mt-20 w-full flex items-center justify-center p-4">
-                     <SyncLoader size={8} color="#4f46e5" />
+                  <div className="mt-12 w-full flex items-center justify-center p-4">
+                     <SyncLoader size={8} color="#111827" />
                   </div>
                )}
 
                {!data && !loading && (
-                  <form className="mt-20 w-full" onSubmit={handleSubmit}>
+                  <form className="mt-12 w-full" onSubmit={handleSubmit}>
                      <div className="w-full flex gap-[.1rem] overflow-hidden">
                         <input
                            type="text"
-                           className="flex-1 bg-indigo-50 p-2 outline-none duration-200 hover:bg-indigo-50 focus:bg-indigo-50 border-2 hover:border-indigo-600 focus:border-indigo-600 border-transparent rounded-md text-indigo-700 placeholder:text-indigo-300"
+                           className="flex-1 p-2 outline-none duration-200 rounded-md text-gray-600 border-2 border-transparent hover:border-gray-600 focus:border-gray-600"
                            placeholder="Ex: Vitória"
                            value={cityName}
                            onChange={({ target }) => handleChange(target.value)}
                         />
-                        <button className="flex items-center justify-center outline-none p-2 overflow-hidden duration-200 bg-indigo-50 hover:bg-indigo-50 focus:bg-indigo-50 rounded-md hover:border-indigo-500 border-2 border-transparent">
-                           <Search size={20} color="#4f46e5" />
+                        <button className="bg-white flex items-center justify-center outline-none p-2 overflow-hidden duration-200 rounded-md border-2 border-transparent hover:border-gray-600">
+                           <Search size={20} color="#111827" />
                         </button>
                      </div>
                   </form>
                )}
 
                {!loading && data && (
-                  <div className="mt-20 w-full rounded-lg p-1">
+                  <div className="mt-12 w-full rounded-lg p-1">
                      <CardWeather data={data} />
 
-                     <p className="mt-10 text-center font-medium text-indigo-500 select-none">
+                     <p className="mt-10 text-center font-medium text-gray-500 select-none">
                         Realizar nova{' '}
                         <button
                            onClick={() => setData(null)}
-                           className="font-bold hover:text-indigo-600 duration-200 uppercase"
+                           className="font-bold hover:text-gray-600 duration-200 uppercase"
                         >
                            busca...
                         </button>
